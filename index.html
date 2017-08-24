@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name=“viewport” content=“width=device-width, initial-scale=1”>
+	<link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<!-- Google Fonts -->
+	<link href="https://fonts.googleapis.com/css?family=Orbitron" rel="stylesheet">
+	<!-- Reset -->
+	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<title>Terminator Psychic</title>
+</head>
+<body>
+	
+    <div id="jumbotron-header" class="jumbotron">
+  		<div class container>
+  			<div class="row">
+    			<div class="col-md-12">
+    				
+                    <img id="logo-img" src="assets/images/The-Terminator-1984-Logo-734x310.jpg" alt="">
+    			
+                </div>
+    		</div>
+    	</div>
+	</div>
+
+	<div id="jumbotron-score" class="jumbotron">
+  		<div class container>
+  			<div class="row">
+    			<div class="col-md-12">
+    				
+                    <div class="col-md-6">
+    					
+                        <img id="left-side-image" src="assets/images/TheTerminatorGb310311-600 x 337.jpg" alt="">
+    				</div>
+    				
+                    <div class="col-md-6">
+    						
+    					<h1>Psychic Terminator</h1>
+                            
+                                <h3>
+                                Guess what letter I thinking of
+                                </h3>
+                                
+                                <h3>Letters Guessed:
+                                    <div id="guessed"></div>
+                                </h3>
+                                    
+                                
+                                <h3 id="wins">
+                                    
+                                </h3>
+                                
+                                <h3 id="loses">
+                                    
+                                </h3>   
+                                
+                                <h3 id="guessLeft">
+                                    
+                                </h3>
+    				</div>
+    			</div>
+    		</div>
+    	</div>
+	</div>
+<!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+    
+    <!-- My Javascript  -->
+    <script type="text/javascript">
+
+    $(document).ready(function() {
+        
+    var letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
+var wins = 0;
+var loses = 0;
+var guessesLeft, guessedLetters, letterToGuess;
+
+resetGame();
+display();
+
+document.onkeyup = function(event) {
+  var guess = event.key;
+  if (guess === letterToGuess) {
+    win();
+  } else if (guessesLeft - 1 === 0) {
+    lost();
+  } else {
+    fail(guess);
+  }
+
+  display();
+}
+
+function display() {
+  var winsP = document.getElementById("wins");
+  var losesP = document.getElementById("loses");
+  var guessLeft = document.getElementById("guessLeft");
+  var letterGuessed = document.getElementById("guessed");
+  winsP.innerHTML = 'Wins: ' + wins;
+  losesP.innerHTML = 'Loses: ' + loses;
+  guessLeft.innerHTML = 'Guesses Left: ' + guessesLeft;
+  letterGuessed.innerHTML = guessedLetters.join(',');
+}
+
+function win() {
+  wins++;
+  resetGame();
+}
+
+function lost() {
+  loses++;
+  resetGame();
+}
+
+function fail(letter) {
+  guessesLeft--;
+  guessedLetters.push(letter);
+}
+
+function resetGame() {
+  guessesLeft = 9;
+  guessedLetters = [];
+  letterToGuess = letters[Math.floor(Math.random() * letters.length)];
+  console.log("Letter to guess: " + letterToGuess);
+}
+
+})/* Document Ready closer */
+
+    </script>
+  </body>
+</html>
+                        
+                        
+                            
+
+    
+
+    
+    
+                                
+                            
+
+                                    
+                                    
+                                        
+
+                            
+
+
+        
+
+
+       
+    
+
+
+        
+
+        
+
+
+
+
+
+
+
+        
+        
+
+        
+
+
